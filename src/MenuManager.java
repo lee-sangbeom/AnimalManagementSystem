@@ -20,7 +20,7 @@ public class MenuManager {
 				animalManager.addAnimal();
 			}
 			else if (num == 2) {
-				animalManager.deleteAnimal();
+	  			animalManager.deleteAnimal();
 			}
 			else if (num == 3) {
 				animalManager.editAnimal();

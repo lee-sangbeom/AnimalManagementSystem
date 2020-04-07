@@ -10,10 +10,7 @@ public class Animal {
 		
 	}
 	
-	public Animal(String name) {
-		this.name = name;
-		
-	}
+
 	public Animal(String name, int weight, int height, String habitat) {
 		this.name = name;
 		this.weight = weight;
@@ -22,6 +19,6 @@ public class Animal {
 	}
 	
 	public void printInfo() {
-		System.out.println("name:" + name + " weight:" + weight + " height:" + height + " habitat:" + habitat);
+		System.out.println("name:" + this.name + " weight:" + this.weight + " height:" + this.height + " habitat:" + this.habitat);
  	}
 }
