@@ -12,7 +12,7 @@ public class MenuManager {
 			System.out.println("1.Add Animal");
 			System.out.println("2.Delete Animal");
 			System.out.println("3.Edit Animal");
-			System.out.println("4.View Animal");
+			System.out.println("4.View Animals");
 			System.out.println("5.Exit");
 			System.out.println("Select one number between 1~5 :");
 			num = in.nextInt();
@@ -26,7 +26,7 @@ public class MenuManager {
 				animalManager.editAnimal();
 			}
 			else if (num == 4) {
-				animalManager.viewAnimal();
+				animalManager.viewAnimals();
 			}
 			else {
 				continue;
