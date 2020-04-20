@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import animal.Animal;
+import animal.BirdsAnimal;
+
 public class AnimalManager {
 	ArrayList<Animal> animals = new ArrayList<Animal>();
 	Scanner in;
@@ -8,23 +11,41 @@ public class AnimalManager {
 		this.in = in;
 	}
 	public void addAnimal() {
-		Animal animal = new Animal();
-		System.out.print("Animal name: ");
-		animal.name = in.next();
-		System.out.print("Animal weight: ");
-		animal.weight = in.nextInt();
-		System.out.print("Animal height: ");
-		animal.height = in.nextInt();
-		System.out.print("Animal habitat: ");
-		animal.habitat = in.next();
-		animals.add(animal);
+		int kind = 0;
+		Animal animal;
+		while(kind != 1 && kind !=2) {
+
+			System.out.print("1 for Mammalia ");
+			System.out.print("2 for Birds ");
+			System.out.print("Select num for Animal Kind between 1 and 2: ");
+			kind = in.nextInt();
+			if(kind == 1) {
+				animal = new Animal();
+				animal.getUserInput(in);
+				animals.add(animal);
+				break;
+			}
+			else if(kind == 2) {
+				animal = new BirdsAnimal();
+				animal.getUserInput(in);
+				animals.add(animal);
+				break;
+			}
+			else {
+				System.out.print("Select num for Animal Kind between 1 and 2: ");
+			}
+		}
+		
+		
+		
+	
 	}
 	public void deleteAnimal() {
 		System.out.print("Animal name: ");
 		String animalname = in.next();
 		int index = -1;
 		for (int i = 0; i<animals.size(); i++) {
-			if (animals.get(i).name.equals(animalname) ) {
+			if (animals.get(i).getName().equals(animalname) ) {
 				index = i;
 				break;
 			}
@@ -46,7 +67,7 @@ public class AnimalManager {
 		String animalname = in.next();
 		for (int i = 0; i<animals.size(); i++) {
 			Animal animal = animals.get(i);
-			if (animal.name.equals(animalname)) {
+			if (animal.getName().equals(animalname)) {
 				int num = -1;
 				while(num != 5) {
 					System.out.println("** Animal Management System Menu **");
@@ -59,23 +80,24 @@ public class AnimalManager {
 					num = in.nextInt();
 					if (num == 1) {
 						System.out.print("Animal name: ");
-						animal.name = in.next();
+						String name = in.next();
+						animal.setName(name);
 
 					}
 					else if (num == 2) {
 						System.out.print("Animal weight: ");
-						animal.weight = in.nextInt();
-
+						int weight = in.nextInt();
+						animal.setWeight(weight);
 					}
 					else if (num == 3) {
 						System.out.print("Animal height: ");
-						animal.height = in.nextInt();
-
+						int height = in.nextInt();
+						animal.setHeight(height);
 					}
 					else if (num == 4) {
 						System.out.print("Animal habitat: ");
-						animal.habitat = in.next();
-
+						String habitat = in.next();
+						animal.setHabitat(habitat);
 					}
 					else {
 						continue;
@@ -89,6 +111,7 @@ public class AnimalManager {
 	public void viewAnimals() {
 		//		System.out.print("Animal name: ");
 		//		String animalname = in.next();
+		System.out.println(" # of registered animals:" + animals.size());
 		for (int i = 0; i<animals.size(); i++) {
 			animals.get(i).printInfo();
 		}
