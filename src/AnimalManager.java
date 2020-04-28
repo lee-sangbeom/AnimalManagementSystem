@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import animal.Animal;
+import animal.AnimalKind;
 import animal.BirdsAnimal;
+import animal.FishAnimal;
+import animal.InsectsAnimal;
 
 public class AnimalManager {
 	ArrayList<Animal> animals = new ArrayList<Animal>();
@@ -15,24 +18,38 @@ public class AnimalManager {
 		Animal animal;
 		while(kind != 1 && kind !=2) {
 
-			System.out.print("1 for Mammalia ");
-			System.out.print("2 for Birds ");
-			System.out.print("Select num for Animal Kind between 1 and 2: ");
+			System.out.println("1 for Mammalia ");
+			System.out.println("2 for Birds ");
+			System.out.println("3 for Insects ");
+			System.out.println("4 for Fish ");
+			System.out.print("Select num 1, 2, 3, or 4 for Animal Kind: ");
 			kind = in.nextInt();
 			if(kind == 1) {
-				animal = new Animal();
+				animal = new Animal(AnimalKind.Mammalia);
 				animal.getUserInput(in);
 				animals.add(animal);
 				break;
 			}
 			else if(kind == 2) {
-				animal = new BirdsAnimal();
+				animal = new BirdsAnimal(AnimalKind.Birds);
+				animal.getUserInput(in);
+				animals.add(animal);
+				break;
+			}
+			else if(kind == 3) {
+				animal = new InsectsAnimal(AnimalKind.Insects);
+				animal.getUserInput(in);
+				animals.add(animal);
+				break;
+			}
+			else if(kind == 4) {
+				animal = new FishAnimal(AnimalKind.Fish);
 				animal.getUserInput(in);
 				animals.add(animal);
 				break;
 			}
 			else {
-				System.out.print("Select num for Animal Kind between 1 and 2: ");
+				System.out.print("Select num 1, 2, 3, or 4 for Animal Kind: ");
 			}
 		}
 		

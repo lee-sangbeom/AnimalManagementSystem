@@ -13,6 +13,9 @@ public class Animal {
 	public Animal() {
 		
 	}
+	public Animal(AnimalKind kind) {
+		this.kind = kind;
+	}
 	
 
 	public Animal(String name, int weight, int height, String habitat) {
@@ -21,7 +24,13 @@ public class Animal {
 		this.height = height;
 		this.habitat = habitat;
 	}
-	
+	public Animal(AnimalKind kind, String name, int weight, int height, String habitat) {
+		this.kind = kind;
+		this.name = name;
+		this.weight = weight;
+		this.height = height;
+		this.habitat = habitat;
+	}
 	public AnimalKind getKind() {
 		return kind;
 	}
@@ -71,8 +80,26 @@ public class Animal {
 		this.habitat = habitat;
 	}
 
+
 	public void printInfo() {
-		System.out.println("name:" + this.name + " weight:" + this.weight + " height:" + this.height + " habitat:" + this.habitat);
+		String skind = "none";
+		switch(this.kind) {
+		case Mammalia:
+			skind = "Mamma";
+			break;
+		case Birds:
+			skind = "Bird";
+			break;
+		case Insects:
+			skind = "Insect";
+			break;		
+		case Fish:
+			skind = "Fish";
+			break;
+		default:
+			
+		}
+		System.out.println("kind:"+ skind + "name:" + this.name + " weight:" + this.weight +"kg"+ " height:" + this.height + "m" + " habitat:" + this.habitat);
  	}
 	
 	public void getUserInput(Scanner in) {
