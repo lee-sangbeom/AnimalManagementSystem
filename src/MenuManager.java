@@ -8,29 +8,34 @@ public class MenuManager {
 
 		int num = -1;
 		while(num != 5) {
-			System.out.println("*** Animal Management System Menu ***");
-			System.out.println("1.Add Animal");
-			System.out.println("2.Delete Animal");
-			System.out.println("3.Edit Animal");
-			System.out.println("4.View Animals");
-			System.out.println("5.Exit");
-			System.out.println("Select one number between 1~5 :");
+			showMenu(); 
 			num = in.nextInt();
-			if (num == 1) {
+			switch(num) {
+			case 1:
 				animalManager.addAnimal();
-			}
-			else if (num == 2) {
-	  			animalManager.deleteAnimal();
-			}
-			else if (num == 3) {
+				break;
+			case 2:	
+				animalManager.deleteAnimal();
+				break;
+			case 3:
 				animalManager.editAnimal();
-			}
-			else if (num == 4) {
+				break;
+			case 4:
 				animalManager.viewAnimals();
-			}
-			else {
+				break;	
+			default:
 				continue;
 			}
 		}
-	}  
+	} 
+
+	public static void showMenu() {
+		System.out.println("*** Animal Management System Menu ***");
+		System.out.println("1.Add Animal");
+		System.out.println("2.Delete Animal");
+		System.out.println("3.Edit Animal");
+		System.out.println("4.View Animals");
+		System.out.println("5.Exit");
+		System.out.println("Select one number between 1~5 :");
+	}
 }
