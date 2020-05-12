@@ -1,10 +1,41 @@
 package animal;
 
-public class MammaliaAnimal {
+import java.util.Scanner;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+public class MammaliaAnimal extends Animal {
 
+	public MammaliaAnimal(AnimalKind kind) {
+		super(kind);
+	}
+	public void getUserInput(Scanner in) {
+		setAnimalName(in);
+		setAnimalWeight(in);
+		setAnimalHeight(in);
+		setAnimalHabitat(in);
+	}
+	public void printInfo() {
+		String skind = getKindString();
+		System.out.println("kind:"+ skind + "name:" + this.name + " weight:" + this.weight +"kg"+ " height:" + this.height + "m" + " habitat:" + this.habitat);
+	}
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Mammalia:
+			skind = "Mamma";
+			break;
+		case Birds:
+			skind = "Bird";
+			break;
+		case Insects:
+			skind = "Insect";
+			break;		
+		case Fish:
+			skind = "Fish";
+			break;
+		default:
+
+		}
+		return skind;
 	}
 
 }

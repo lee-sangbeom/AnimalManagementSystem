@@ -2,7 +2,7 @@ package animal;
 
 import java.util.Scanner;
 
-public class Animal {
+public abstract class Animal implements AnimalInput{
 	
 	protected AnimalKind kind = AnimalKind.Mammalia;
 	protected String name;
@@ -81,43 +81,29 @@ public class Animal {
 	}
 
 
-	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Mammalia:
-			skind = "Mamma";
-			break;
-		case Birds:
-			skind = "Bird";
-			break;
-		case Insects:
-			skind = "Insect";
-			break;		
-		case Fish:
-			skind = "Fish";
-			break;
-		default:
-			
-		}
-		System.out.println("kind:"+ skind + "name:" + this.name + " weight:" + this.weight +"kg"+ " height:" + this.height + "m" + " habitat:" + this.habitat);
- 	}
+	public abstract void printInfo(); 
 	
-	public void getUserInput(Scanner in) {
+	public void setAnimalName(Scanner in) {
 		System.out.print("Animal name: ");
 		String name = in.next();
 		this.setName(name);
-		
+	}
+	public void setAnimalWeight(Scanner in) {
 		System.out.print("Animal weight: ");
 		int weight = in.nextInt();
 		this.setWeight(weight);
-		
+	}
+	
+	public void setAnimalHeight(Scanner in) {
 		System.out.print("Animal height: ");
 		int height = in.nextInt();
 		this.setHeight(height);
-		
+	}
+	
+	public void setAnimalHabitat(Scanner in) {
 		System.out.print("Animal habitat: ");
 		String habitat = in.next();
 		this.setHabitat(habitat);
-		
 	}
+	
 }
