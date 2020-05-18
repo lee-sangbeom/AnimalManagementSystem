@@ -2,11 +2,13 @@ package animal;
 
 import java.util.Scanner;
 
+import exception.NameFormatException;
+
 public interface AnimalInput {
 
 	public String getName();
 	
-	public void setName(String name);
+	public void setName(String name) throws NameFormatException;
 	
 	public void setWeight(int weight);
 	

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import animal.Animal;
@@ -18,46 +19,51 @@ public class AnimalManager {
 	public void addAnimal() {
 		int kind = 0;
 		AnimalInput animalInput;
-		while(kind != 1 && kind !=2) {
-
-			System.out.println("1 for Mammalia ");
-			System.out.println("2 for Birds ");
-			System.out.println("3 for Insects ");
-			System.out.println("4 for Fish ");
-			System.out.print("Select num 1, 2, 3, or 4 for Animal Kind: ");
-			kind = in.nextInt();
-			if(kind == 1) {
-				animalInput = new MammaliaAnimal(AnimalKind.Mammalia);
-				animalInput.getUserInput(in);
-				animals.add(animalInput);
-				break;
-			}
-			else if(kind == 2) {
-				animalInput = new BirdsAnimal(AnimalKind.Birds);
-				animalInput.getUserInput(in);
-				animals.add(animalInput);
-				break;
-			}
-			else if(kind == 3) {
-				animalInput = new InsectsAnimal(AnimalKind.Insects);
-				animalInput.getUserInput(in);
-				animals.add(animalInput);
-				break;
-			}
-			else if(kind == 4) {
-				animalInput = new FishAnimal(AnimalKind.Fish);
-				animalInput.getUserInput(in);
-				animals.add(animalInput);
-				break;
-			}
-			else {
+		while(kind < 1 || kind > 4) {
+			try {
+				System.out.println("go into add animals in while");
+				System.out.println("1 for Mammalia ");
+				System.out.println("2 for Birds ");
+				System.out.println("3 for Insects ");
+				System.out.println("4 for Fish ");
 				System.out.print("Select num 1, 2, 3, or 4 for Animal Kind: ");
+				kind = in.nextInt();
+				if(kind == 1) {
+					animalInput = new MammaliaAnimal(AnimalKind.Mammalia);
+					animalInput.getUserInput(in);
+					animals.add(animalInput);
+					break;
+				}
+				else if(kind == 2) {
+					animalInput = new BirdsAnimal(AnimalKind.Birds);
+					animalInput.getUserInput(in);
+					animals.add(animalInput);
+					break;
+				}
+				else if(kind == 3) {
+					animalInput = new InsectsAnimal(AnimalKind.Insects);
+					animalInput.getUserInput(in);
+					animals.add(animalInput);
+					break;
+				}
+				else if(kind == 4) {
+					animalInput = new FishAnimal(AnimalKind.Fish);
+					animalInput.getUserInput(in);
+					animals.add(animalInput);
+					break;
+				}
+				else {
+					System.out.print("Select num 1, 2, 3, or 4 for Animal Kind: ");
+				}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 4!");
+				if (in.hasNext()) {
+					in.next();
+				}
+				kind= -1;
 			}
 		}
-		
-		
-		
-	
 	}
 	public void deleteAnimal() {
 		System.out.print("Animal name: ");
@@ -65,7 +71,7 @@ public class AnimalManager {
 		int index = findIndex(animalname);
 		removefromAnimals(index, animalname);
 	}
-	
+
 	public int findIndex(String animalname) {
 		int index = -1;
 		for (int i = 0; i<animals.size(); i++) {
@@ -76,7 +82,7 @@ public class AnimalManager {
 		}
 		return index;
 	}
-	
+
 	public int removefromAnimals(int index, String animalname) {
 		if(index >= 0) {
 			animals.remove(index);
@@ -114,7 +120,7 @@ public class AnimalManager {
 					default:
 						continue;
 					}
-					
+
 				} //while
 				break;
 			} // if
@@ -122,13 +128,13 @@ public class AnimalManager {
 		}// for
 	}
 	public void viewAnimals() {
-		
+
 		System.out.println(" # of registered animals:" + animals.size());
 		for (int i = 0; i<animals.size(); i++) {
 			animals.get(i).printInfo();
 		}
 	} 
-	
+
 
 	public void showEditMenu() {
 		System.out.println("** Animal Management System Menu **");
