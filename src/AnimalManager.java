@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import animal.Animal;
+
 import animal.AnimalInput;
 import animal.AnimalKind;
 import animal.BirdsAnimal;
@@ -10,10 +11,18 @@ import animal.FishAnimal;
 import animal.InsectsAnimal;
 import animal.MammaliaAnimal;
 
-public class AnimalManager {
+public class AnimalManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -628655379746111713L;
+	
 	ArrayList<AnimalInput> animals = new ArrayList<AnimalInput>();
-	Scanner in;
+	transient Scanner in;
 	AnimalManager(Scanner in){
+		this.in = in;
+	}
+	public void setScanner(Scanner in) {
 		this.in = in;
 	}
 	public void addAnimal() {

@@ -1,11 +1,17 @@
 package animal;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.NameFormatException;
 
-public abstract class Animal implements AnimalInput{
+public abstract class Animal implements AnimalInput, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 263741550785304333L;
+	
 	protected AnimalKind kind = AnimalKind.Mammalia;
 	protected String name;
 	protected int weight;
