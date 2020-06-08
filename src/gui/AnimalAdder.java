@@ -2,9 +2,13 @@ package gui;
 
 import javax.swing.*;
 
-public class AnimalAdder extends JFrame {
+public class AnimalAdder extends JPanel {
 	
-	public AnimalAdder() {
+	WindowFrame frame;
+	
+	public AnimalAdder(WindowFrame frame) {
+		this.frame = frame;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -38,9 +42,8 @@ public class AnimalAdder extends JFrame {
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		
-		this.setSize(300,300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setContentPane(panel);
+		
+		this.add(panel);
 		this.setVisible(true);
 	}
 	
