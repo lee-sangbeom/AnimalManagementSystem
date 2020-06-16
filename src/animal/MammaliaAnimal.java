@@ -15,7 +15,7 @@ public class MammaliaAnimal extends Animal {
 	}
 	public void printInfo() {
 		String skind = getKindString();
-		System.out.println("kind:"+ skind + "name:" + this.name + " weight:" + this.weight +"kg"+ " height:" + this.height + "m" + " habitat:" + this.habitat);
+		System.out.println("kind:"+ skind + "name:" + this.name + " weight:" + this.weight +" kg"+ " height:" + this.height + " cm" + " habitat:" + this.habitat);
 	}
 	public String getKindString() {
 		String skind = "none";

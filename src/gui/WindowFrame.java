@@ -3,21 +3,27 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import manager.AnimalManager;
+
 public class WindowFrame extends JFrame{
 	
+	AnimalManager animalManager;
 	MenuSelection menuselection;
 	AnimalAdder animaladder;
 	AnimalViewer animalviewer;
 	
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.animaladder = new AnimalAdder(this);
-		this.animalviewer = new AnimalViewer(this);
+	public WindowFrame(AnimalManager animalManager) {
+		
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
+		this.setTitle("My Frame");
 		
-		this.setupPanel(menuselection);
+		this.animalManager = animalManager;
+		menuselection = new MenuSelection(this);
+		animaladder = new AnimalAdder(this);
+		animalviewer = new AnimalViewer(this,this.animalManager);
+		
+		this.add(menuselection);
 		
 		this.setVisible(true);
 		

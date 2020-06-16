@@ -1,9 +1,10 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+import animal.Animal;
 import animal.AnimalInput;
 import animal.AnimalKind;
 import animal.BirdsAnimal;
@@ -144,7 +145,13 @@ public class AnimalManager implements Serializable{
 		}
 	} 
 
-
+	public int size() {
+		return animals.size();
+	}
+	
+	public AnimalInput get(int index) {
+		return (Animal) animals.get(index);
+	}
 	public void showEditMenu() {
 		System.out.println("** Animal Management System Menu **");
 		System.out.println("1.Edit Name");

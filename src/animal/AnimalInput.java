@@ -12,9 +12,15 @@ public interface AnimalInput {
 	
 	public void setWeight(int weight);
 	
+	public int getWeight();
+	
 	public void setHeight(int height);
 	
+	public int getHeight();
+	
 	public void setHabitat(String habitat);
+	
+	public String getHabitat();
 	
 	public void getUserInput(Scanner in);
 	
